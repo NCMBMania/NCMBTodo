@@ -23,6 +23,8 @@
 		C7021E76195CEED600FC796B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7021E52195CEED600FC796B /* UIKit.framework */; };
 		C7021E7E195CEED600FC796B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7021E7C195CEED600FC796B /* InfoPlist.strings */; };
 		C7021E80195CEED600FC796B /* NCMBTodoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7021E7F195CEED600FC796B /* NCMBTodoTests.m */; };
+		C7F11A941962DBF10019DE01 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F11A931962DBF10019DE01 /* AddTaskViewController.m */; };
+		F44AFF3366C340F283CC6257 /* libPods-NCMBTodo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AE00B2707D4AA683E97829 /* libPods-NCMBTodo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78654EF9C8CE45DDB57280A7 /* Pods-NCMBTodo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCMBTodo.xcconfig"; path = "Pods/Pods-NCMBTodo.xcconfig"; sourceTree = "<group>"; };
+		86AE00B2707D4AA683E97829 /* libPods-NCMBTodo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NCMBTodo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7021E4B195CEED600FC796B /* NCMBTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NCMBTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7021E4E195CEED600FC796B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7021E50195CEED600FC796B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,6 +62,8 @@
 		C7021E7B195CEED600FC796B /* NCMBTodoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NCMBTodoTests-Info.plist"; sourceTree = "<group>"; };
 		C7021E7D195CEED600FC796B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C7021E7F195CEED600FC796B /* NCMBTodoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NCMBTodoTests.m; sourceTree = "<group>"; };
+		C7F11A921962DBF10019DE01 /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
+		C7F11A931962DBF10019DE01 /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 				C7021E51195CEED600FC796B /* CoreGraphics.framework in Frameworks */,
 				C7021E53195CEED600FC796B /* UIKit.framework in Frameworks */,
 				C7021E4F195CEED600FC796B /* Foundation.framework in Frameworks */,
+				F44AFF3366C340F283CC6257 /* libPods-NCMBTodo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +98,7 @@
 				C7021E79195CEED600FC796B /* NCMBTodoTests */,
 				C7021E4D195CEED600FC796B /* Frameworks */,
 				C7021E4C195CEED600FC796B /* Products */,
+				78654EF9C8CE45DDB57280A7 /* Pods-NCMBTodo.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +118,7 @@
 				C7021E50195CEED600FC796B /* CoreGraphics.framework */,
 				C7021E52195CEED600FC796B /* UIKit.framework */,
 				C7021E73195CEED600FC796B /* XCTest.framework */,
+				86AE00B2707D4AA683E97829 /* libPods-NCMBTodo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,6 +136,8 @@
 				C7021E6A195CEED600FC796B /* DetailViewController.m */,
 				C7021E6C195CEED600FC796B /* Images.xcassets */,
 				C7021E55195CEED600FC796B /* Supporting Files */,
+				C7F11A921962DBF10019DE01 /* AddTaskViewController.h */,
+				C7F11A931962DBF10019DE01 /* AddTaskViewController.m */,
 			);
 			path = NCMBTodo;
 			sourceTree = "<group>";
@@ -167,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7021E83195CEED600FC796B /* Build configuration list for PBXNativeTarget "NCMBTodo" */;
 			buildPhases = (
+				11E173E033F743029663E618 /* Check Pods Manifest.lock */,
 				C7021E47195CEED500FC796B /* Sources */,
 				C7021E48195CEED500FC796B /* Frameworks */,
 				C7021E49195CEED500FC796B /* Resources */,
+				E1DDBA85C34F4CDBB1ECBD3F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,11 +266,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11E173E033F743029663E618 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E1DDBA85C34F4CDBB1ECBD3F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-NCMBTodo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C7021E47195CEED500FC796B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F11A941962DBF10019DE01 /* AddTaskViewController.m in Sources */,
 				C7021E5F195CEED600FC796B /* AppDelegate.m in Sources */,
 				C7021E68195CEED600FC796B /* MasterViewController.m in Sources */,
 				C7021E5B195CEED600FC796B /* main.m in Sources */,
@@ -393,7 +440,9 @@
 		};
 		C7021E84195CEED600FC796B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78654EF9C8CE45DDB57280A7 /* Pods-NCMBTodo.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -406,7 +455,9 @@
 		};
 		C7021E85195CEED600FC796B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78654EF9C8CE45DDB57280A7 /* Pods-NCMBTodo.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -476,6 +527,7 @@
 				C7021E85195CEED600FC796B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7021E86195CEED600FC796B /* Build configuration list for PBXNativeTarget "NCMBTodoTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +536,7 @@
 				C7021E88195CEED600FC796B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

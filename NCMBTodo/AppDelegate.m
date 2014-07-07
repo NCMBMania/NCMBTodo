@@ -7,12 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import <NCMB/NCMB.h>
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+	[NCMB setApplicationKey:@"your_application_key" clientKey:@"your_client_key"];
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 	    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
 	    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];

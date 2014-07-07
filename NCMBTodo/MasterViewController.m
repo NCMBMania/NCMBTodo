@@ -10,7 +10,10 @@
 
 #import "DetailViewController.h"
 
-@interface MasterViewController () {
+#import "AddTaskViewController.h"
+#import <NCMB/NCMB.h>
+
+@interface MasterViewController () <AddTaskViewControllerDelegate> {
     NSMutableArray *_objects;
 }
 @end
@@ -26,15 +29,28 @@
     [super awakeFromNib];
 }
 
+-(void) loadTable
+{
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-	self.navigationItem.rightBarButtonItem = addButton;
-	self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+	if (!_objects) {
+		_objects = [[NSMutableArray alloc] init];
+	}
+	NCMBQuery *query = [NCMBQuery queryWithClassName:@"TODO"];
+	[query findObjectsInBackgroundWithBlock:^(NSArray *todos, NSError *error) {
+		for (NCMBObject *todo in todos) {
+			NSLog(@"%@", [todo objectForKey:@"todo"]);
+			[_objects insertObject:[todo objectForKey:@"todo"] atIndex:0];
+			// TableViewに行を挿入する
+			NSIndexPath *indexPath = [NSIndexPath indexPathForRow: 0 inSection:0];
+			[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+		}
+	}];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,14 +59,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+- (void)addTaskViewControllerDidCancel:(AddTaskViewController *)controller
 {
+    NSLog(@"addTaskViewControllerDidCancel");
+    
+    // 画面を閉じるメソッドを呼ぶ
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)addTaskViewControllerDidFinish:(AddTaskViewController *)controller item:(NSString *)item
+{
+    NSLog(@"addTaskViewControllerDidFinish item:%@",item);
+    
+    // 保存するための配列の準備ができていない場合は、配列を生成し、初期化する
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+	NCMBObject *obj = [NCMBObject objectWithClassName:@"TODO"];
+    [obj setObject:item forKey:@"todo"];
+	NSError *saveError = nil;
+    [obj save:&saveError];
+	if (saveError == nil) {
+		// 受け取ったitemを配列に格納する
+		[_objects insertObject:item atIndex:0];
+		// TableViewに行を挿入する
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+		[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+		// 画面を閉じるメソッドを呼ぶ
+		[self dismissViewControllerAnimated:YES completion:NULL];
+	}else{
+		
+	}
 }
 
 #pragma mark - Table View
@@ -116,10 +156,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+    if ([[segue identifier] isEqualToString:@"ShowAddTaskView"]) {
+        AddTaskViewController *addTaskViewController = (AddTaskViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];
+        addTaskViewController.delegate = self;
     }
 }
 
